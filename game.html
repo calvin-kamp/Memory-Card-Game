@@ -6,15 +6,15 @@
     <title>Memory · Game</title>
 </head>
 <body>
-    <section class="game" data-component="game">
-        <header class="game__header">
+    <section class="game grid-wrap" data-component="game">
+        <header class="game__header col-12">
             <a href="./settings.html">Settings</a>
             <div class="game__stats" data-game-stats></div>
             <button type="button" data-action="new-game">New game</button>
         </header>
 
-        <div class="game__message" data-game-message></div>
-        <div class="game__board" data-board></div>
+        <div class="game__message col-12" data-game-message></div>
+        <div class="game__board col-12" data-board></div>
     </section>
 
     <script type="module" src="/src/main.ts"></script>
