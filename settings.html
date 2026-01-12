@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory · Settings</title>
+</head>
+<body>
+    <section class="settings" data-component="settings">
+        <div class="grid-wrap grid-wrap--md">
+            <div class="settings__headline col-12">
+                <h1>
+                    Settings
+                </h1>
+            </div>
+
+            <div class="settings__option col-12" data-setting="color-theme">
+                <h2>
+                    Game Theme
+                </h2>
+
+                <label for="color-theme-light">
+                    <input type="radio" name="color-theme" id="color-theme-light" value="light">
+                    <span>Light</span>
+                </label>
+
+                <label for="color-theme-dark">
+                    <input type="radio" name="color-theme" id="color-theme-dark" value="dark">
+                    <span>Dark</span>
+                </label>
+            </div>
+
+            <div class="settings__option col-12" data-setting="player">
+                <h2>
+                    Choose Player
+                </h2>
+
+                <label for="player-blue">
+                    <input type="radio" name="player" id="player-blue" value="blue">
+                    <span>Blue</span>
+                </label>
+
+                <label for="player-red">
+                    <input type="radio" name="player" id="player-red" value="red">
+                    <span>Red</span>
+                </label>
+            </div>
+
+            <div class="settings__option col-12" data-setting="board-size">
+                <h2>
+                    Board Size
+                </h2>
+
+                <label for="board-size-16">
+                    <input type="radio" name="board-size" id="board-size-16" value="16">
+                    <span>16</span>
+                </label>
+
+                <label for="board-size-24">
+                    <input type="radio" name="board-size" id="board-size-24" value="24">
+                    <span>24</span>
+                </label>
+
+                <label for="board-size-32">
+                    <input type="radio" name="board-size" id="board-size-32" value="32">
+                    <span>32</span>
+                </label>
+            </div>
+
+            <div class="settings__actions col-12">
+                <button type="button" data-action="start-game">
+                    Start Game
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

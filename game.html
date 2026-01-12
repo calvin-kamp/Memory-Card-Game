@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory · Game</title>
+</head>
+<body>
+    <section class="game" data-component="game">
+        <header class="game__header">
+            <a href="./settings.html">Settings</a>
+            <div class="game__stats" data-game-stats></div>
+            <button type="button" data-action="new-game">New game</button>
+        </header>
+
+        <div class="game__message" data-game-message></div>
+        <div class="game__board" data-board></div>
+    </section>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

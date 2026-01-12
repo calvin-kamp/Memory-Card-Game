@@ -13,7 +13,15 @@
         "noEmit": true,
         "esModuleInterop": true,
         "resolveJsonModule": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+
+        "paths": {
+            "@assets/*": ["./src/assets/*"],
+            "@models": ["./src/models/*"],
+            "@utils": ["./src/utils/*"],
+            "@stores/*": ["./src/stores/*"],
+            "@templates/*": ["./src/templates/*"]
+        }
     },
     "include": [
         "src"
