@@ -1,0 +1,75 @@
+@use "@styles/abstracts" as *;
+
+.memory-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-border);
+    border-radius: 1rem;
+    background-color: transparent;
+    cursor: pointer;
+
+    &[aria-disabled="true"] {
+        cursor: default;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-heading);
+        outline-offset: 2px;
+    }
+
+    &__inner {
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+        transform-style: preserve-3d;
+        transition-property: transform;
+        transition-duration: 250ms;
+        transition-timing-function: ease;
+    }
+
+    &.is-flipped .memory-card__inner {
+        transform: rotateY(180deg);
+    }
+
+    &__front,
+    &__back {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        border-radius: 1rem;
+        backface-visibility: hidden;
+    }
+
+    &__front {
+        background-color: var(--color-surface);
+    }
+
+    &__back {
+        background-color: var(--color-surface-2);
+        transform: rotateY(180deg);
+
+        img {
+            width: 55%;
+            height: 55%;
+            object-fit: contain;
+        }
+    }
+
+    &.is-matched {
+        border-width: 2px;
+
+        &[data-matched-by="blue"] {
+            border-color: var(--color-player-blue, var(--color-primary));
+        }
+
+        &[data-matched-by="red"] {
+            border-color: var(--color-player-red, var(--color-danger));
+        }
+    }
+
+}

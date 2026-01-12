@@ -1,0 +1,93 @@
+@use "@styles/abstracts" as *;
+
+.game {
+    justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    &__header {
+        @include flex(row, nowrap, space-between, center);
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    &__stats {
+        color: var(--color-text-muted);
+    }
+
+    &__message {
+        min-height: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: $font-weight-semibold;
+    }
+
+    &__board {
+        max-width: 60rem;
+    }
+
+    .game-stats {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+
+        &__turn {
+            font-weight: $font-weight-bold;
+        }
+
+        &[data-turn="blue"] {
+            .game-stats__turn {
+                color: var(--color-player-blue, var(--color-primary));
+            }
+        }
+
+        &[data-turn="red"] {
+            .game-stats__turn {
+                color: var(--color-player-red, var(--color-danger));
+            }
+        }
+
+        &__scores {
+            display: inline-flex;
+            gap: 0.5rem;
+        }
+
+        &__meta {
+            color: var(--color-text-muted);
+        }
+
+        
+        .score {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-top: 0.35rem;
+            padding-right: 0.6rem;
+            padding-bottom: 0.35rem;
+            padding-left: 0.6rem;
+            border-width: 1px;
+            border-style: solid;
+            border-color: var(--color-border);
+            border-radius: 999px;
+            background-color: var(--color-surface);
+
+            &--blue {
+                border-color: var(--color-player-blue, var(--color-primary));
+            }
+
+            &--red {
+                border-color: var(--color-player-red, var(--color-danger));
+            }
+
+            &.is-active {
+                border-width: 2px;
+            }
+        }
+
+    }
+}
+
+.board {
+    display: grid;
+    gap: 0.75rem;
+}

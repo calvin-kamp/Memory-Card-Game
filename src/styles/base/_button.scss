@@ -1,46 +1,97 @@
-@use '@styles/abstracts' as *;
+@use "@styles/abstracts" as *;
 
-:where(button, input[type="button"], input[type="submit"], input[type="reset"]) {
-    display: inline-block;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--color-border, #e2e8f0);
-    border-radius: 0.5rem;
-    background-color: var(--color-surface-2, #f1f5f9);
-    color: var(--color-text, #0f172a);
-    font-weight: $font-weight-medium;
-    line-height: $line-height-text;
-    text-decoration: none;
-    transition: background-color 150ms ease, border-color 150ms ease, opacity 150ms ease, transform 50ms ease;
+button, .button {
     appearance: none;
     -webkit-appearance: none;
-    user-select: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    min-height: 2.75rem;
+    padding-top: 0.7rem;
+    padding-right: 1rem;
+    padding-bottom: 0.7rem;
+    padding-left: 1rem;
+
+    font: inherit;
+    font-weight: 600;
+    line-height: 1;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--color-border);
+    border-radius: 0.75rem;
+
+    background-color: var(--color-surface-2);
+    color: var(--color-text);
+
     cursor: pointer;
+    user-select: none;
+
+    transition-property: transform, background-color, border-color, color, box-shadow, opacity;
+    transition-duration: 120ms;
+    transition-timing-function: ease;
 }
 
-@media (hover: hover) and (pointer: fine) {
-    :where(button, input[type="button"], input[type="submit"], input[type="reset"]):hover {
-        background-color: var(--color-surface, #f8fafc);
-        border-color: var(--color-border-strong, #cbd5e1);
+:where(button, .button):focus-visible {
+    outline: 2px solid var(--color-heading);
+    outline-offset: 2px;
+}
+
+:where(button, .button)[disabled],
+:where(button, .button)[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+@media (hover: hover) {
+    :where(button, .button):not([disabled]):not([aria-disabled="true"]):hover {
+        background-color: var(--color-surface);
+        border-color: var(--color-heading);
     }
 }
 
-:where(button, input[type="button"], input[type="submit"], input[type="reset"]):active {
+:where(button, .button):not([disabled]):not([aria-disabled="true"]):active {
     transform: translateY(1px);
 }
 
-:where(button, input[type="button"], input[type="submit"], input[type="reset"]):focus-visible {
-    @include focus-ring;
+/* Optional variants */
+:where(.button--primary) {
+    border-color: var(--color-primary, var(--color-heading));
+    background-color: var(--color-primary, var(--color-heading));
+    color: var(--color-on-primary, var(--color-background));
 }
 
-@supports not selector(:focus-visible) {
-    :where(button, input[type="button"], input[type="submit"], input[type="reset"]):focus {
-        @include focus-ring;
+@media (hover: hover) {
+    :where(.button--primary):hover {
+        background-color: var(--color-primary-hover, var(--color-heading));
+        border-color: var(--color-primary-hover, var(--color-heading));
     }
 }
 
-:where(button, input[type="button"], input[type="submit"], input[type="reset"]):disabled,
-:where(button, input[type="button"], input[type="submit"], input[type="reset"])[aria-disabled="true"] {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
+:where(.button--outline) {
+    background-color: transparent;
+    border-color: var(--color-primary, var(--color-heading));
+    color: var(--color-primary, var(--color-heading));
+}
+
+@media (hover: hover) {
+    :where(.button--outline):hover {
+        background-color: var(--color-surface-2);
+    }
+}
+
+:where(.button--ghost) {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-text);
+}
+
+@media (hover: hover) {
+    :where(.button--ghost):hover {
+        background-color: var(--color-surface-2);
+        border-color: var(--color-border);
+    }
 }
