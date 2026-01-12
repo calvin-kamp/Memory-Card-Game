@@ -18,7 +18,6 @@
 
         "paths": {
             "@root/*": ["./src/*"],
-            "@assets/*": ["./src/assets/*"],
             "@models/*": ["./src/models/*"],
             "@utils/*": ["./src/utils/*"],
             "@stores/*": ["./src/stores/*"],

@@ -1,13 +1,29 @@
 import { randomNumber } from '@root/utils/helper'
 
-export function getIconUrls(): string[] {
-    const modules = import.meta.glob('../assets/*.svg', {
-        eager: true,
-        query: '?url',
-        import: 'default',
-    }) as Record<string, string>
+const ICON_NAMES = [
+    'angular.svg',
+    'bootstrap.svg',
+    'browser-stack.svg',
+    'css.svg',
+    'docker.svg',
+    'git.svg',
+    'html.svg',
+    'javascript.svg',
+    'nuxt.svg',
+    'python.svg',
+    'react.svg',
+    'shopware.svg',
+    'stack-overflow.svg',
+    'svelte.svg',
+    'typescript.svg',
+    'visual-studio-code.svg',
+    'vite.svg',
+    'vue.svg',
+]
 
-    return Object.values(modules)
+export function getIconUrls(): string[] {
+    const baseUrl = new URL('/icons/', window.location.href).toString().replace(/\/$/, '')
+    return ICON_NAMES.map(name => `${baseUrl}/${name}`)
 }
 
 export function shuffle<T>(arr: T[]): T[] {
