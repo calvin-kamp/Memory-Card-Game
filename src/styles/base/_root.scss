@@ -1,0 +1,21 @@
+@use "@styles/abstracts" as *;
+@use "sass:map";
+
+:root {
+    color-scheme: light dark;
+}
+
+:root,
+:root[data-theme="light"] {
+    @include css-vars(map.get(map.get($colors, light), semantic), $prefix: "color", $rgb: true);
+    @include css-vars(map.get(map.get($colors, light), palette), $prefix: "palette", $rgb: true);
+}
+
+:root[data-theme="dark"] {
+    @include css-vars(map.get(map.get($colors, dark), semantic), $prefix: "color", $rgb: true);
+    @include css-vars(map.get(map.get($colors, dark), palette), $prefix: "palette", $rgb: true);
+}
+
+body {
+    background-color: var(--color-background);
+}

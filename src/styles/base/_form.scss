@@ -1,0 +1,92 @@
+@use '@styles/abstracts' as *;
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: $font-weight-medium;
+    color: var(--color-heading, var(--color-text, #0f172a));
+}
+
+:where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]), textarea, select) {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    line-height: $line-height-text;
+    color: var(--color-text, #0f172a);
+    background-color: var(--color-surface, #f8fafc);
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: 0.5rem;
+    transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+:where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]), textarea, select)::placeholder {
+    color: var(--color-text-muted, #64748b);
+}
+
+:where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]), textarea, select):focus-visible {
+    border-color: var(--color-primary, #2563eb);
+    outline: none;
+    @include focus-ring(var(--color-focus-ring, var(--color-primary, #2563eb)));
+}
+
+@supports not selector(:focus-visible) {
+    :where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]), textarea, select):focus {
+        border-color: var(--color-primary, #2563eb);
+        outline: none;
+        @include focus-ring(var(--color-focus-ring, var(--color-primary, #2563eb)));
+    }
+}
+
+:where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]), textarea, select):disabled {
+    background-color: var(--color-muted, #f1f5f9);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+:where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]), textarea, select)[aria-invalid="true"] {
+    border-color: var(--color-danger, #dc2626);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 6.25rem;
+}
+
+select {
+    padding-right: 2.5rem;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25em;
+    appearance: none;
+    cursor: pointer;
+}
+
+:where(input[type="checkbox"], input[type="radio"]) {
+    width: auto;
+    margin-right: 0.5rem;
+    accent-color: var(--color-primary, #2563eb);
+    cursor: pointer;
+}
+
+fieldset {
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: 0.5rem;
+}
+
+legend {
+    padding: 0 0.5rem;
+    font-weight: $font-weight-semibold;
+    color: var(--color-heading, var(--color-text, #0f172a));
+}
+
+input[type="range"] {
+    padding: 0;
+}
+
+input[type="color"] {
+    height: 2.5rem;
+    padding: 0;
+    cursor: pointer;
+}

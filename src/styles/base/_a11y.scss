@@ -1,0 +1,53 @@
+@use '@styles/abstracts' as *;
+
+@include reduce-motion {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+:where(a[href], summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+    @include focus-ring;
+}
+
+@supports not selector(:focus-visible) {
+    :where(a[href], summary, [tabindex]:not([tabindex="-1"])):focus {
+        @include focus-ring;
+    }
+}
+
+.sr-only {
+    @include sr-only;
+}
+
+.sr-only-focusable {
+    @include sr-only;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:focus-visible {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1rem;
+    margin: 0;
+    background-color: var(--color-surface);
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color-border);
+    border-radius: 0.5rem;
+    white-space: normal;
+    color: var(--color-text);
+    clip: auto;
+    overflow: visible;
+    z-index: $z-index-900;
+}
+
+:target {
+    scroll-margin-top: var(--scroll-margin-top, 6rem);
+}

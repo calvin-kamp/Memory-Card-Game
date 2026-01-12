@@ -1,0 +1,206 @@
+@use "sass:map";
+
+$neutral-light: (
+    0:      #ffffff,
+    50:     #f8fafc,
+    100:    #f1f5f9,
+    200:    #e2e8f0,
+    300:    #cbd5e1,
+    400:    #94a3b8,
+    500:    #64748b,
+    600:    #475569,
+    700:    #334155,
+    800:    #1f2937,
+    900:    #0f172a,
+    1000:   #020617
+);
+
+$neutral-dark: (
+    0:      map.get($neutral-light, 1000),
+    50:     map.get($neutral-light, 900),
+    100:    map.get($neutral-light, 800),
+    200:    map.get($neutral-light, 700),
+    300:    map.get($neutral-light, 600),
+    400:    map.get($neutral-light, 500),
+    500:    map.get($neutral-light, 400),
+    600:    map.get($neutral-light, 300),
+    700:    map.get($neutral-light, 200),
+    800:    map.get($neutral-light, 100),
+    900:    map.get($neutral-light, 50),
+    1000:   map.get($neutral-light, 0)
+);
+
+$primary: (
+    50:     #eff6ff,
+    100:    #dbeafe,
+    200:    #bfdbfe,
+    300:    #93c5fd,
+    400:    #60a5fa,
+    500:    #3b82f6,
+    600:    #2563eb,
+    700:    #1d4ed8,
+    800:    #1e40af,
+    900:    #1e3a8a
+);
+
+$accent: (
+    50:     #fdf4ff,
+    100:    #fae8ff,
+    200:    #f5d0fe,
+    300:    #f0abfc,
+    400:    #e879f9,
+    500:    #d946ef,
+    600:    #c026d3,
+    700:    #a21caf,
+    800:    #86198f,
+    900:    #701a75
+);
+
+$success: (
+    50:     #f0fdf4,
+    100:    #dcfce7,
+    200:    #bbf7d0,
+    300:    #86efac,
+    400:    #4ade80,
+    500:    #22c55e,
+    600:    #16a34a,
+    700:    #15803d,
+    800:    #166534,
+    900:    #14532d
+);
+
+$warning: (
+    50:     #fffbeb,
+    100:    #fef3c7,
+    200:    #fde68a,
+    300:    #fcd34d,
+    400:    #fbbf24,
+    500:    #f59e0b,
+    600:    #d97706,
+    700:    #b45309,
+    800:    #92400e,
+    900:    #78350f
+);
+
+$danger: (
+    50:     #fef2f2,
+    100:    #fee2e2,
+    200:    #fecaca,
+    300:    #fca5a5,
+    400:    #f87171,
+    500:    #ef4444,
+    600:    #dc2626,
+    700:    #b91c1c,
+    800:    #991b1b,
+    900:    #7f1d1d
+);
+
+$info: (
+    50:     #ecfeff,
+    100:    #cffafe,
+    200:    #a5f3fc,
+    300:    #67e8f9,
+    400:    #22d3ee,
+    500:    #06b6d4,
+    600:    #0891b2,
+    700:    #0e7490,
+    800:    #155e75,
+    900:    #164e63
+);
+
+$palette-light: (
+    neutral:    $neutral-light,
+    primary:    $primary,
+    accent:     $accent,
+    success:    $success,
+    warning:    $warning,
+    danger:     $danger,
+    info:       $info
+);
+
+$palette-dark: (
+    neutral:    $neutral-dark,
+    primary:    $primary,
+    accent:     $accent,
+    success:    $success,
+    warning:    $warning,
+    danger:     $danger,
+    info:       $info
+);
+
+$semantic-light: (
+    background:     map.get($neutral-light, 0),
+    surface:        map.get($neutral-light, 50),
+    surface-2:      map.get($neutral-light, 100),
+    muted:          map.get($neutral-light, 100),
+    border:         map.get($neutral-light, 200),
+    border-strong:  map.get($neutral-light, 300),
+
+    text:           map.get($neutral-light, 900),
+    text-muted:     map.get($neutral-light, 600),
+    text-inverse:   map.get($neutral-light, 0),
+    heading:        map.get($neutral-light, 1000),
+
+    primary:        map.get($primary, 600),
+    primary-hover:  map.get($primary, 700),
+    primary-active: map.get($primary, 800),
+    primary-dark:   map.get($primary, 700),
+    on-primary:     map.get($neutral-light, 0),
+
+    accent:         map.get($accent, 600),
+    on-accent:      map.get($neutral-light, 0),
+
+    link:           map.get($primary, 600),
+    link-hover:     map.get($primary, 700),
+    focus-ring:     map.get($primary, 700),
+
+    success:        map.get($success, 600),
+    warning:        map.get($warning, 600),
+    warning-light:  map.get($warning, 100),
+    danger:         map.get($danger, 600),
+    info:           map.get($info, 600)
+);
+
+$semantic-dark: (
+    background:     map.get($neutral-dark, 0),
+    surface:        map.get($neutral-dark, 50),
+    surface-2:      map.get($neutral-dark, 100),
+    muted:          map.get($neutral-dark, 100),
+    border:         map.get($neutral-dark, 200),
+    border-strong:  map.get($neutral-dark, 300),
+
+    text:           map.get($neutral-dark, 900),
+    text-muted:     map.get($neutral-dark, 600),
+    text-inverse:   map.get($neutral-dark, 0),
+    heading:        map.get($neutral-dark, 1000),
+
+    primary:        map.get($primary, 400),
+    primary-hover:  map.get($primary, 300),
+    primary-active: map.get($primary, 200),
+    primary-dark:   map.get($primary, 300),
+    on-primary:     map.get($neutral-dark, 0),
+
+    accent:         map.get($accent, 400),
+    on-accent:      map.get($neutral-dark, 0),
+
+    link:           map.get($primary, 400),
+    link-hover:     map.get($primary, 300),
+    focus-ring:     map.get($primary, 300),
+
+    success:        map.get($success, 400),
+    warning:        map.get($warning, 400),
+    warning-light:  map.get($warning, 800),
+    danger:         map.get($danger, 400),
+    info:           map.get($info, 400)
+);
+
+$colors: (
+    light: (
+        palette:    $palette-light,
+        semantic:   $semantic-light
+    ),
+    dark: (
+        palette:    $palette-dark,
+        semantic:   $semantic-dark
+    )
+);

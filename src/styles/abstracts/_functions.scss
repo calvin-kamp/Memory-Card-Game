@@ -1,0 +1,44 @@
+@use "@styles/abstracts/tokens.layout" as *;
+@use "sass:math";
+@use "sass:meta";
+@use "sass:map";
+
+@function get-rem($px, $base: 16px) {
+    @return math.div($px, $base) * 1rem;
+}
+
+@function grid-size($size) {
+    @if $size == null or meta.type-of($size) !="number" or $size <=0 or $size >$grid-columns {
+        @error "Invalid size: "$size". It must be a number between 1 and #{$grid-columns}.";
+    }
+
+    @return math.percentage(math.div($size, $grid-columns));
+}
+
+@function breakpoint-value($size) {
+    @if meta.type-of($size)=="string" and map.has-key($breakpoints, $size) {
+        @return map.get($breakpoints, $size);
+    }
+
+    @if meta.type-of($size)=="number" {
+        @if math.is-unitless($size) {
+            @return $size * 1px;
+        }
+
+        @return $size;
+    }
+
+    @error "Unknown breakpoint `#{$size}`. Use a key from $breakpoints or a number (e.g. 768px).";
+}
+
+@function breakpoint-max($breakpoint) {
+    @if meta.type-of($breakpoint) !="number" {
+        @error "breakpoint-max() expects a number, got: #{meta.type-of($breakpoint)}";
+    }
+
+    @if math.unit($breakpoint)=="px" {
+        @return $breakpoint - 1px;
+    }
+
+    @return $breakpoint;
+}

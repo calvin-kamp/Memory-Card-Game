@@ -1,0 +1,124 @@
+@use "@styles/abstracts" as *;
+
+.grid-wrap {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0 $container-padding;
+    @include flex();
+
+    @each $breakpoint, $container-width in $container-widths {
+        @include breakpoint($breakpoint) {
+            max-width: $container-width;
+        }
+    }
+
+    &--fullsize {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    @each $breakpoint, $container-width in $container-widths {
+        @include breakpoint($breakpoint) {
+            &.grid-wrap--#{$breakpoint} {
+                max-width: $container-width;
+                padding: 0 $container-padding;
+            }
+
+            &.grid-wrap--#{$breakpoint}-fullsize {
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+    }
+
+    > [class*="col-"] > .grid-wrap {
+        width: calc(100% + (2 * #{$col-padding}));
+        max-width: none;
+        padding: 0;
+        margin: 0 #{-$col-padding};
+    }
+
+    @for $i from 1 through $grid-columns {
+        .col-#{$i} {
+            flex: 0 0 auto;
+            width: grid-size($i);
+            padding: 0 $col-padding;
+        }
+    }
+
+    @for $o from 1 through $grid-offset-max {
+        .col-left-#{$o} {
+            margin-left: grid-size($o);
+        }
+
+        .col-right-#{$o} {
+            margin-right: grid-size($o);
+        }
+    }
+
+    .col--fullsize {
+        flex: 0 0 auto;
+        padding: 0;
+        width: calc(100% + (2 * #{$container-padding}));
+        margin: 0 #{-$col-padding};
+    }
+
+    &--fullsize {
+        .col--fullsize {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+    > [class*="col-"] > .grid-wrap {
+        .col--fullsize {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+    @each $breakpoint, $width in $breakpoints {
+        @include breakpoint($breakpoint) {
+            @for $i from 1 through $grid-columns {
+                .col-#{$breakpoint}-#{$i} {
+                    flex: 0 0 auto;
+                    width: grid-size($i);
+                    padding: 0 $col-padding;
+                }
+            }
+
+            @for $o from 1 through $grid-offset-max {
+                .col-#{$breakpoint}-left-#{$o} {
+                    margin-left: grid-size($o);
+                }
+
+                .col-#{$breakpoint}-right-#{$o} {
+                    margin-right: grid-size($o);
+                }
+            }
+
+            .col-#{$breakpoint}--fullsize {
+                flex: 0 0 auto;
+                width: calc(100% + (2 * #{$container-padding}));
+                padding: 0;
+                margin: 0 #{-$col-padding};
+            }
+
+            &.grid-wrap--#{$breakpoint}-fullsize {
+                .col--fullsize,
+                .col-#{$breakpoint}--fullsize {
+                    width: 100%;
+                    margin: 0;
+                }
+            }
+
+            > [class*="col-"] > .grid-wrap {
+                .col-#{$breakpoint}--fullsize {
+                    width: 100%;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+@use '@styles/abstracts' as *;
+
+:where(button, input[type="button"], input[type="submit"], input[type="reset"]) {
+    display: inline-block;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: 0.5rem;
+    background-color: var(--color-surface-2, #f1f5f9);
+    color: var(--color-text, #0f172a);
+    font-weight: $font-weight-medium;
+    line-height: $line-height-text;
+    text-decoration: none;
+    transition: background-color 150ms ease, border-color 150ms ease, opacity 150ms ease, transform 50ms ease;
+    appearance: none;
+    -webkit-appearance: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :where(button, input[type="button"], input[type="submit"], input[type="reset"]):hover {
+        background-color: var(--color-surface, #f8fafc);
+        border-color: var(--color-border-strong, #cbd5e1);
+    }
+}
+
+:where(button, input[type="button"], input[type="submit"], input[type="reset"]):active {
+    transform: translateY(1px);
+}
+
+:where(button, input[type="button"], input[type="submit"], input[type="reset"]):focus-visible {
+    @include focus-ring;
+}
+
+@supports not selector(:focus-visible) {
+    :where(button, input[type="button"], input[type="submit"], input[type="reset"]):focus {
+        @include focus-ring;
+    }
+}
+
+:where(button, input[type="button"], input[type="submit"], input[type="reset"]):disabled,
+:where(button, input[type="button"], input[type="submit"], input[type="reset"])[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}

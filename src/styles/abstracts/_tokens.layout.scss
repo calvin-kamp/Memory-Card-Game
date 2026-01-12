@@ -1,0 +1,21 @@
+@use "sass:math";
+
+$breakpoints: (
+    sm:     0px,
+    md:     768px,
+    lg:     1024px,
+    xl:     1280px,
+);
+
+$container-widths: (
+    sm: 640px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1440px,
+);
+
+$grid-columns:      12 !default;
+$grid-offset-max:   math.div($grid-columns, 2) !default;
+
+$container-padding: 8px;
+$col-padding:       8px;
